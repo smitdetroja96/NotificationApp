@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
+
+import java.util.Random;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
@@ -17,14 +20,13 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent){
 
         con = context;
-        int alarmId = intent.getIntExtra("AlarmId", 0);
+        int alarmId = intent.getIntExtra("requestCode", 0);
 
 
-            int notificationId = 1;
+            int notificationId = alarmId;
             String channelId = "channel-01";
             String channelName = "Channel Name";
             int importance = NotificationManager.IMPORTANCE_HIGH;
-
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
                     .setSmallIcon(R.mipmap.ic_launcher)
